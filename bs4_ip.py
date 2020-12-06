@@ -21,7 +21,7 @@ def getip138(url, url_type):
         if(r.status_code==200):
             break
         if(req_count > 5):
-            print("未能成功请求"+ip)
+            print("未能成功请求:"+url)
             return []
     
     r.encoding = r.apparent_encoding
