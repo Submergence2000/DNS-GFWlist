@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import re
+import Levenshtein
 
 def getip138(url, url_type):
     headers = {
@@ -43,7 +44,16 @@ def getip138(url, url_type):
                 links.append(re_pattern_domain.findall(org_link)[0])
     return links
 
-if __name__ == "__main__":
-    url = "127.0.0.1"
-    getip138(url, "ip")
+def pollution_verify(domain, rev_domains):
+    similar_count = 0
+    for rev_domain in rev_domains:
+        dist = Levenshtein.distance(domain, rev_domain)
+        if dist < (abs(len(rev_domain) - len(domain)) + 0.25*(min(len(rev_domain), len(domain)))):
+            rev_domains.remove(rev_domain)
+            similar_count = similar_count + 1
+    
+    if similar_count > 0.1*len(rev_domains):
+        return []
+    else:
+        return rev_domains
     
