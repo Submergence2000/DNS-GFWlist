@@ -6,7 +6,7 @@ if __name__ == "__main__":
     domain_dict = {"www.google.com":10, "www.twitter.com":10, "www.facebook.com":10, "cn.nytimes.com":10, "www.epochtimes.com":10, "www.t66y.com":10, "www.pixiv.net":10, "www.bbc.com":10, "www.reddit.com":11}
     domain_unsearch = list(domain_dict.keys())
     ip_visited = []
-    for i in range(0,200):
+    for i in range(0,250):
         gen_domain = domain_unsearch[0]
 
         for key in domain_unsearch:
